@@ -21,6 +21,10 @@ public class ShopItem {
 	@Column(name = "cost")
 	private int cost;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "icon_id", referencedColumnName = "id")
+	private Icon icon;
+	
 	public ShopItem() {}
 	
 	public ShopItem(String name, String description, String category, int cost) {

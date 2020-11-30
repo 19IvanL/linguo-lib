@@ -1,10 +1,14 @@
 package ams2.linguo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "inventory")
-public class Inventory {
+public class Inventory implements Serializable {
+
+	private static final long serialVersionUID = 4139440724071299773L;
 
 	@Id
 	@OneToOne(cascade = CascadeType.ALL)

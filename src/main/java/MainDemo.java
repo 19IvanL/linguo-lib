@@ -52,6 +52,9 @@ public class MainDemo {
             Course course2 = new Course("ES", "PT");
             session.save(course2);
             
+            Course course3 = new Course("EN", "ES");
+            session.save(course3);
+            
             // Final commit
             t.commit();
         } catch (Exception e) {

@@ -3,7 +3,7 @@ package ams2.linguo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "course")
+@Table(name = "course", uniqueConstraints = {@UniqueConstraint(columnNames = {"base_language", "target_language"})})
 public class Course {
 
 	@Id
