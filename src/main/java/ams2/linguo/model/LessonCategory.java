@@ -19,6 +19,10 @@ public class LessonCategory {
 	private Icon icon;
 
 	public LessonCategory() {}
+	
+	public LessonCategory(String title) {
+		this.title = title;
+	}
 
 	public LessonCategory(long id, String title) {
 		this.id = id;
