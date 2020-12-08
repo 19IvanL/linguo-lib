@@ -12,8 +12,23 @@ import ams2.linguo.model.Course;
 import ams2.linguo.util.HibernateUtil;
 
 public class CourseQueries implements ICourseQueries {
-	
-	public List<Course> getCoursesByBaseAndTargetLanguage(String baseLanguage, String targetLanguage) {
+
+	@Override
+	public Course insertCourseByBaseAndTargetLanguages(String baseLanguage, String targetLanguage) {
+		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+			Transaction transaction = session.beginTransaction();
+			Course course = new Course(baseLanguage, targetLanguage);
+			session.save(course);
+			transaction.commit();
+			return course;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Course> getCoursesByBaseAndTargetLanguages(String baseLanguage, String targetLanguage) {
 		String queryText;
 		if (!baseLanguage.isBlank() && targetLanguage.isBlank())
 			queryText = "FROM Course WHERE baseLanguage = '" + baseLanguage + "'";
@@ -33,5 +48,5 @@ public class CourseQueries implements ICourseQueries {
 		}
 		return null;
 	}
-	
+
 }
