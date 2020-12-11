@@ -63,13 +63,13 @@ public class MainDemo {
 			session.save(lessonCategory2);
 
 			// Lesson
-			Lesson lesson1 = new Lesson(course1, lessonCategory1);
+			Lesson lesson1 = new Lesson("Comida 1", course1, lessonCategory1);
 			session.save(lesson1);
 
-			Lesson lesson2 = new Lesson(course2, lessonCategory1);
+			Lesson lesson2 = new Lesson("Comida 2",course2, lessonCategory1);
 			session.save(lesson2);
 
-			Lesson lesson3 = new Lesson(course3, lessonCategory2);
+			Lesson lesson3 = new Lesson("Food 3",course3, lessonCategory2);
 			session.save(lesson3);
 
 			// Final commit
