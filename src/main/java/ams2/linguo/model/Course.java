@@ -1,10 +1,14 @@
 package ams2.linguo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "course", uniqueConstraints = {@UniqueConstraint(columnNames = {"base_language", "target_language"})})
-public class Course {
+public class Course implements Serializable {
+
+	private static final long serialVersionUID = 3680291961712473017L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

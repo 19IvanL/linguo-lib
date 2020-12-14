@@ -1,11 +1,15 @@
 package ams2.linguo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "icon")
-public class Icon {
-	
+public class Icon implements Serializable {
+
+	private static final long serialVersionUID = 5166697857191271149L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column

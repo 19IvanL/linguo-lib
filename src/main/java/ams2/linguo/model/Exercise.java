@@ -1,11 +1,15 @@
 package ams2.linguo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "exercise")
-public class Exercise {
-	
+public class Exercise implements Serializable {
+
+	private static final long serialVersionUID = 4960681784113933636L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
