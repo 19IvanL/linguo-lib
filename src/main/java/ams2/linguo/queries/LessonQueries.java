@@ -16,8 +16,8 @@ import ams2.linguo.util.HibernateUtil;
 public class LessonQueries implements ILessonQueries {
 
 	@Override
-	public List<Lesson> getLessonsByCourseId(long courseId) {
-		String queryText = "FROM Lesson WHERE course = " + courseId;
+	public List<Lesson> getLessonsByCourseId(LessonCategory lessonCategory) {
+		String queryText = "from Lesson l join Lesson_Category lc on lc.id = l.id; " ;//+ courseId;
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
 			Transaction transaction = session.beginTransaction();
 			Query query = session.createQuery(queryText);
@@ -32,8 +32,16 @@ public class LessonQueries implements ILessonQueries {
 	}
 
 	@Override
-	public Lesson insertLesonByCourseAndLessonCategory(String name, Course courseid, LessonCategory lessonCategory) {
-		// TODO Auto-generated method stub
+	public Lesson insertLesonByNameAndLessonCategory(String name, LessonCategory lessonCategory) {
+		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+			Transaction transaction = session.beginTransaction();
+			Lesson lesson= new Lesson(name, lessonCategory);
+			session.save(lessonCategory);
+			transaction.commit();
+			return lesson;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
