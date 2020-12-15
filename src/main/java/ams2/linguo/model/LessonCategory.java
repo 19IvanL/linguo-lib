@@ -1,11 +1,15 @@
 package ams2.linguo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "lesson_category")
-public class LessonCategory {
-	
+public class LessonCategory implements Serializable {
+
+	private static final long serialVersionUID = -8427113571522271620L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
@@ -15,23 +19,30 @@ public class LessonCategory {
 	private String title;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    private Course course;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "icon_id", referencedColumnName = "id")
 	private Icon icon;
 
 	public LessonCategory() {}
 	
-	public LessonCategory(String title) {
+	public LessonCategory(String title, Course course) {
 		this.title = title;
+		this.course = course;
 	}
 
-	public LessonCategory(long id, String title) {
+	public LessonCategory(long id, String title, Course course) {
 		this.id = id;
 		this.title = title;
+		this.course = course;
 	}
 	
-	public LessonCategory(long id, String title, Icon icon) {
+	public LessonCategory(long id, String title, Course course, Icon icon) {
 		this.id = id;
 		this.title = title;
+		this.course = course;
 		this.icon = icon;
 	}
 
@@ -49,6 +60,14 @@ public class LessonCategory {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public Icon getIcon() {

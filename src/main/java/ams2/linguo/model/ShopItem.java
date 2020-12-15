@@ -1,11 +1,15 @@
 package ams2.linguo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "shop_item")
-public class ShopItem {
-	
+public class ShopItem implements Serializable {
+
+	private static final long serialVersionUID = -6951710457297762175L;
+
 	@Id
 	private Long id;
 	

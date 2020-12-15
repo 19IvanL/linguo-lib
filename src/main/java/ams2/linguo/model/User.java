@@ -1,12 +1,15 @@
 package ams2.linguo.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
+
+	private static final long serialVersionUID = -3582591734434677368L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

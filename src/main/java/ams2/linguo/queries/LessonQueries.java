@@ -8,7 +8,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import ams2.linguo.interfaces.ILessonQueries;
+import ams2.linguo.model.Course;
 import ams2.linguo.model.Lesson;
+import ams2.linguo.model.LessonCategory;
 import ams2.linguo.util.HibernateUtil;
 
 public class LessonQueries implements ILessonQueries {
@@ -28,5 +30,12 @@ public class LessonQueries implements ILessonQueries {
 		}
 		return null;
 	}
+
+	@Override
+	public Lesson insertLesonByCourseAndLessonCategory(String name, Course courseid, LessonCategory lessonCategory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 
 }
