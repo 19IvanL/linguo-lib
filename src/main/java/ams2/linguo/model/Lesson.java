@@ -19,25 +19,19 @@ public class Lesson implements Serializable {
 	private String name;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_id", referencedColumnName = "id")
-    private Course course;
-
-	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "lesson_category_id", referencedColumnName = "id")
 	private LessonCategory lessonCategory;
 
 	public Lesson() {}
 
-	public Lesson(String name, Course course, LessonCategory lessonCategory) {
+	public Lesson(String name, LessonCategory lessonCategory) {
 		this.name = name;
-		this.course = course;
 		this.lessonCategory = lessonCategory;
 	}
 
-	public Lesson(long id, String name, Course course, LessonCategory lessonCategory) {
+	public Lesson(long id, String name, LessonCategory lessonCategory) {
 		this.id = id;
 		this.name = name;
-		this.course = course;
 		this.lessonCategory = lessonCategory;
 	}
 
@@ -57,13 +51,6 @@ public class Lesson implements Serializable {
 		this.name = name;
 	}
 
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
-	}
 
 	public LessonCategory getLessonCategory() {
 		return lessonCategory;

@@ -9,5 +9,4 @@ import ams2.linguo.model.LessonCategory;
 public interface ILessonQueries {
 	public List<Lesson> getLessonsByCourseId(long courseId);
 	public Lesson insertLesonByCourseAndLessonCategory(String name ,Course courseid, LessonCategory lessonCategory);
-	public List<Lesson> getLessonsCategoryByCourseId(long courseId);
 }

@@ -37,20 +37,5 @@ public class LessonQueries implements ILessonQueries {
 		return null;
 	}
 	
-	@Override
-	public List<Lesson> getLessonsCategoryByCourseId(long courseId) {
-		String queryText = "FROM lesson l JOIN lesson_category lc ON lc.id = l.lesson_category_id WHERE l.course_id = " + courseId;
-		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
-			Transaction transaction = session.beginTransaction();
-			Query query = session.createQuery(queryText);
-			@SuppressWarnings("unchecked")
-			List<Lesson> lessons = query.getResultList();
-			transaction.commit();
-			return (List<Lesson>)lessons;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 
 }

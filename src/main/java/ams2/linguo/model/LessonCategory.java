@@ -19,23 +19,30 @@ public class LessonCategory implements Serializable {
 	private String title;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    private Course course;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "icon_id", referencedColumnName = "id")
 	private Icon icon;
 
 	public LessonCategory() {}
 	
-	public LessonCategory(String title) {
+	public LessonCategory(String title, Course course) {
 		this.title = title;
+		this.course = course;
 	}
 
-	public LessonCategory(long id, String title) {
+	public LessonCategory(long id, String title, Course course) {
 		this.id = id;
 		this.title = title;
+		this.course = course;
 	}
 	
-	public LessonCategory(long id, String title, Icon icon) {
+	public LessonCategory(long id, String title, Course course, Icon icon) {
 		this.id = id;
 		this.title = title;
+		this.course = course;
 		this.icon = icon;
 	}
 
@@ -53,6 +60,14 @@ public class LessonCategory implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public Icon getIcon() {
