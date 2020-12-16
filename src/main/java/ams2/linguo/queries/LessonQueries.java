@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import ams2.linguo.interfaces.ILessonQueries;
-import ams2.linguo.model.Course;
 import ams2.linguo.model.Lesson;
 import ams2.linguo.model.LessonCategory;
 import ams2.linguo.util.HibernateUtil;

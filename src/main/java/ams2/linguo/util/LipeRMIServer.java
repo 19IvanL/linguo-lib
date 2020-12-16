@@ -3,10 +3,8 @@ package ams2.linguo.util;
 import java.io.IOException;
 import java.net.Socket;
 
-import ams2.linguo.interfaces.ICourseQueries;
-import ams2.linguo.interfaces.ILessonQueries;
-import ams2.linguo.queries.CourseQueries;
-import ams2.linguo.queries.LessonQueries;
+import ams2.linguo.interfaces.*;
+import ams2.linguo.queries.*;
 import net.sf.lipermi.exception.LipeRMIException;
 import net.sf.lipermi.handler.CallHandler;
 import net.sf.lipermi.net.IServerListener;
@@ -16,13 +14,14 @@ public class LipeRMIServer {
 
 	private static Server server;
 	final private static short PORT = 2460;
-	
+
 	public static void main(String[] args) {
 		System.out.println("Loading server...");
 		CallHandler callHandler = new CallHandler();
 		try {
-			callHandler.registerGlobal(ICourseQueries.class, new CourseQueries());
-			callHandler.registerGlobal(ILessonQueries.class, new LessonQueries());
+			callHandler.registerGlobal(ITestQueries.class, new TestQueries());
+			//			callHandler.registerGlobal(ICourseQueries.class, new CourseQueries());
+			//			callHandler.registerGlobal(ILessonQueries.class, new LessonQueries());
 			openServer(PORT, callHandler);
 		} catch (LipeRMIException e) {
 			e.printStackTrace();
@@ -54,5 +53,5 @@ public class LipeRMIServer {
 		server.close();
 		System.out.println("Server closed successfully");
 	}
-	
+
 }
