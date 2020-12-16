@@ -7,6 +7,6 @@ import ams2.linguo.model.Lesson;
 import ams2.linguo.model.LessonCategory;
 
 public interface ILessonQueries {
-	public List<Lesson> getLessonsByCourseId(LessonCategory lessonCategory);
+	public List<Lesson> getLessonsByLessonCategoryId(long lessonCategoryId);
 	public Lesson insertLesonByNameAndLessonCategory(String name , LessonCategory lessonCategory);
 }
