@@ -1,7 +1,6 @@
 package ams2.linguo.util;
 
-import ams2.linguo.interfaces.ICourseQueries;
-import ams2.linguo.model.Course;
+import ams2.linguo.interfaces.ITestQueries;
 import net.sf.lipermi.handler.CallHandler;
 import net.sf.lipermi.net.Client;
 
@@ -14,13 +13,11 @@ public class LipeRMIClient {
 		try {
 			System.out.println("Loading connection...");
 			Client client = new Client(remoteHost, port, callHandler);
-			ICourseQueries remoteObject = (ICourseQueries)client.getGlobal(ICourseQueries.class);
+			ITestQueries remoteObject = (ITestQueries)client.getGlobal(ITestQueries.class);
 			if (client != null) {
 				System.out.println("Connection successful\n");
-				System.out.println("Querying data...");
-				for (Course course : remoteObject.getCoursesByBaseAndTargetLanguages("ES", "")) {
-					System.out.println(course.getId());
-				}
+				System.out.println("Querying data...\n");
+				System.out.println(remoteObject.getHelloWorld());
 				System.out.println();
 			}
 			client.close();
