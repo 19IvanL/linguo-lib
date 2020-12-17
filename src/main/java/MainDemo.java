@@ -62,15 +62,9 @@ public class MainDemo {
 			LessonCategory lessonCategory2 = new LessonCategory("Vehicles", course2);
 			session.save(lessonCategory2);
 
-			// Lesson
-//			Lesson lesson1 = new Lesson("Comida 1", lessonCategory1);
-//			session.save(lesson1);
-//
-//			Lesson lesson2 = new Lesson("Comida 2", lessonCategory1);
-//			session.save(lesson2);
-//
-//			Lesson lesson3 = new Lesson("Food 3", lessonCategory2);
-//			session.save(lesson3);
+			// ExerciseType
+			ExerciseType exerciseType1 = new ExerciseType(1, "Quiz", "Select the correct translation");
+			session.save(exerciseType1);
 
 			// Final commit
 			t.commit();
